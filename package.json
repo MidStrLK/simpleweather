@@ -1,0 +1,42 @@
+{
+  "name": "OpenShift-Sample-App",
+  "version": "1.0.0",
+  "description": "OpenShift Sample Application",
+  "keywords": [
+    "OpenShift",
+    "Node.js",
+    "application",
+    "openshift"
+  ],
+  "author": {
+    "name": "EDS",
+    "email": "elaginds@gmail.com"
+  },
+  "homepage": "http://www.openshift.com/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MidStrLK/weather_compare/tree/master"
+  },
+
+  "engines": {
+    "node": ">= 0.6.0",
+    "npm": ">= 1.0.0"
+  },
+
+  "dependencies": {
+    "express": 	"~3.4.4",
+	"cheerio": 	"~0.19.0",
+	"fs": 		"~0.0.2",
+	"request": 	"~2.67.0",
+	"utf8": 	"~2.1.1"
+	
+  },
+  "devDependencies": {},
+  "bundleDependencies": [],
+
+  "private": true,
+  "scripts": {
+		"start": "node index.js"
+  },
+  "main": "index.js"
+}
