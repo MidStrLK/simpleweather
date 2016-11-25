@@ -1,10 +1,13 @@
-var mongodb  = require("../mongo/mongodb"),
-	requestdata = require('./requestdata'),
+var requestdata = require('./requestdata'),
     clearstr    = require('./clearstr');
 
 exports.select = select;
 
 function select(postData, callback, COLLECTION){
+
+    callback(1, 'OK');
+    return;
+
 	if(postData) postData = JSON.parse(postData);
 	var aData, fData, dData,
 		date = (postData && postData.date) ? new Date(postData.date) : new Date(),

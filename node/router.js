@@ -1,10 +1,10 @@
 var fs = require("fs"),
     res;
 
-function route(handle, pathname, response, postData, COLLECTION) {
+function route(handle, pathname, response, postData) {
 
   if (typeof handle[pathname] === 'function') {
-    handle[pathname](response, handle, pathname, postData, COLLECTION);
+    handle[pathname](response, handle, pathname, postData);
 
 
   }else if(pathname.indexOf('.js') !== -1){

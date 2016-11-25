@@ -1,13 +1,8 @@
-var mongodb     = require("../mongo/mongodb"),
-    fs          = require("fs"),
-    index       = fs.readFileSync('./index.html'),
-    weather     = require("./weather"),
-    calculate   = require("./calculate"),
-    selectall   = require("./selectall"),
-    hourly      = require("./hourly"),
+var fs          = require("fs"),
+    index       = fs['readFileSync']('./index.html'),
     actual      = require("./actual");
 
-function submitRequest(response, handle, pathname, postData, COLLECTION){
+function submitRequest(response, handle, pathname, postData){
 
   if(!pathname || !response){
     response.writeHead(500, { 'Content-Type': 'application/json', 'charset':'utf-8' });
@@ -36,21 +31,8 @@ function submitRequest(response, handle, pathname, postData, COLLECTION){
             response.end();
           };
 
-      if (pathname === '/insert') {
-          weather.getAllWeather(func, COLLECTION);
-      }else if (pathname === '/testCalculate') {
-          calculate.calc(func, COLLECTION);
-      }else if (pathname === '/select') {
-          selectall.select(postData, func, COLLECTION)
-      }else if (pathname === '/mongorequest') {
-          console.info('postData - ',postData);
-          mongodb.requestMDB(path, func, JSON.parse(postData), COLLECTION);
-      }else if (pathname === '/gethourly') {
-          hourly.getHourly(func, COLLECTION);
-      }else if (pathname === '/getactual') {
+      if (pathname === '/getactual') {
           actual.getActual(func);
-      } else if (mongodb.requestMDB) {
-          mongodb.requestMDB(path, func, null, COLLECTION);
       } else {
           response.writeHead(500, {'Content-Type': 'application/json', 'charset': 'utf-8'});
           response.write('Ошибка в запросе к БД ' + path);

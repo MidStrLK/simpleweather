@@ -195,6 +195,15 @@ Ext.define('APP.buttonPanel' , {
 		var me = this;
 
         Ext.Ajax.request({
+            url: '/getactual',
+            method: 'GET',
+            callback: function (opts, success, response) {
+                console.info('opts, success, response - ',opts, success, response);
+            }
+        });
+
+
+        /*Ext.Ajax.request({
             url: '/gethourly',
             method: 'GET',
             callback: function (opts, success, response) {
@@ -244,7 +253,7 @@ Ext.define('APP.buttonPanel' , {
 
 				me.getDesktopLabel().setText(response.statusText + ' ' + response.status + '. Выбрано ' + text + ' записей');
 			}
-		});
+		});*/
 	},
 
 	setActualWeather: function (data) {

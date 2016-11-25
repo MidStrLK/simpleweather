@@ -1,33 +1,11 @@
 var http                = require("http"),
     url                 = require("url"),
-    weather             = require("./weather"),
-    timer               = require("./timer"),
     formatDate          = require('../formatdate'),
-    mongodb             = require("../mongo/mongodb"),
 	server_port         = process.env['OPENSHIFT_NODEJS_PORT'] || 3003,
-	server_ip_address   = process.env['OPENSHIFT_NODEJS_IP']   || '127.0.0.1',
-    COLLECTION;
+	server_ip_address   = process.env['OPENSHIFT_NODEJS_IP']   || '127.0.0.1';
 
-function routeRouter(route, handle, pathname, response, postData){
-    if(COLLECTION){
-        route(handle, pathname, response, postData, COLLECTION);
-    }else{
-        mongodb.getCollectionMDB(function(COLL){
-            COLLECTION = COLL;
-            routeRouter(route, handle, pathname, response, postData)
-        })
-    }
-}
-
-function startTimer(){
-    if(COLLECTION){
-        timer.start(COLLECTION);
-    }else{
-        mongodb.getCollectionMDB(function(COLL){
-            COLLECTION = COLL;
-            timer.start(COLLECTION);
-        })
-    }
+function routeRouter(route, handle, pathname, response, postData) {
+    route(handle, pathname, response, postData);
 }
 
 function start(route, handle) {
@@ -55,8 +33,6 @@ function start(route, handle) {
 		console.log( "Listening on " + server_ip_address + ", server_port " + server_port )
 	});
 
-
-    startTimer();
 
 }
 
