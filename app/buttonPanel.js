@@ -203,7 +203,7 @@ Ext.define('APP.buttonPanel' , {
         });
 
 
-        /*Ext.Ajax.request({
+        Ext.Ajax.request({
             url: '/gethourly',
             method: 'GET',
             callback: function (opts, success, response) {
@@ -214,7 +214,7 @@ Ext.define('APP.buttonPanel' , {
 
                     data.forEach(function(val){
                         store.add(val)
-                    })
+                    });
 
                     var hour = (new Date()).getHours(),
                         column = grid.columns[hour],
@@ -227,7 +227,7 @@ Ext.define('APP.buttonPanel' , {
             }
         });
 
-		Ext.Ajax.request({
+		/*Ext.Ajax.request({
 			url: '/select',
 			method: 'GET',
 			callback: function (opts, success, response) {

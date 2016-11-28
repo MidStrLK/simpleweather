@@ -55,12 +55,12 @@ Ext.define('APP.Desktop' , {
 		cmargins: '5 5 5 5',
 		//height: 300,
 		autoHeight: true
-	}, {
+	}/*, {
 		xtype: 'forecastGrid',
 		cmargins: '5 5 5 5',
 		//height: 300,
 		autoHeight: true
-	}/*, {
+	}*//*, {
 		xtype: 'todayForecastGrid',
 		cmargins: '5 5 5 5',
 		autoHeight: true

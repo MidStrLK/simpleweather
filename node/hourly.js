@@ -9,7 +9,7 @@ exports.getHourly = getHourly;
 
 
 /* Запрашивает почасовой прогноз и отправляет обратно */
-function getHourly(callback, COLLECTION){
+function getHourly(callback){
     if(!manifest || !manifest.list) return;
 
     var requestArray = [];
@@ -47,7 +47,7 @@ function getHourly(callback, COLLECTION){
             }
 
             res['name'] = 'accuweather';
-console.info('res - ',res);
+
             return res;
         },
         func = function(data){
@@ -67,7 +67,7 @@ console.info('res - ',res);
     };
 
     requestArray.forEach(function(val){
-        submitRequest(val, func, COLLECTION);
+        submitRequest(val, func);
     });
 }
 
@@ -125,7 +125,7 @@ function getEndResult(responseArray){
 
 
 /* Запрос данных с сайта */
-function submitRequest(values, callback, COLLECTION){
+function submitRequest(values, callback){
 
     request({
         uri: values.url
@@ -133,13 +133,13 @@ function submitRequest(values, callback, COLLECTION){
         var $;
         if(body) $ = cheerio.load(body);
 
-        findParameter($, values, callback, COLLECTION);
+        findParameter($, values, callback);
     });
 }
 
 
 /* Ищет параметры для каждого случая */
-function findParameter($, values, callback, COLLECTION){
+function findParameter($, values, callback){
 
     var result = [],
         res = {};
@@ -160,7 +160,7 @@ function findParameter($, values, callback, COLLECTION){
             var link = $(this);
             var text = link.text();
             if(!result[key]) result[key] = {};
-            result[key]['text'] = clearstr.translate(text, COLLECTION);
+            result[key]['text'] = clearstr.translate(text);
         });
     }
 
