@@ -26,7 +26,8 @@ translateArray = {
     'partly cloudy' : 'Переменная облачность',
     'mostly sunny'  : 'Облачно с прояснениями',
     'sunny'         : 'Солнечно',
-    'clear'         : 'Ясно'
+    'clear'         : 'Ясно',
+    'flurries'      : 'Порывы'
 };
 
 exports.clearTemp = clearTemp;
